@@ -11,26 +11,22 @@
       %h2 Level 1
       .description
         %p Level 1 assumes that by 2050 the UK has developed 3.5 GW of storage and 4 GW of interconnectors. Smart demand shifting is not implemented.
-      = structured_results 1
-
+      
     .choice#choice2
       %h2 Level 2
       .description
         %p Level 2 assumes that by 2050 the UK has developed 4 GW of storage, with a storage capacity of 30 GWh, and 10 GW of interconnectors. Around 25% of all electric vehicles and plug-in hybrid electric vehicles allow flexible charging, enabling co-ordinated electricity demand shifting.
-      = structured_results 2
-
+      
     .choice#choice3
       %h2 Level 3
       .description
         %p Level 3 assumes that by 2050 the UK has developed 7 GW of storage, with a storage capacity of 100 GWh, and 15 GW of interconnectors. This level also assumes that around 50% of electric cars allow flexible charging for co-ordinated demand shifting.
-      = structured_results 3    
-
+      
     .choice#choice4
       %h2 Level 4
       .description
         %p Level 4 assumes that by 2050 the UK has 20 GW of storage, with a storage capacity of 400 GWh, and 30 GW of interconnectors. This level also assumes that around 75% of electric cars allow flexible charging for co-ordinated demand shifting.
-      = structured_results 4
-
+      
   #interaction
     %h2 Interaction with other choices
     %p The renewable technologies chosen (in particular onshore wind, offshore wind and wave power), the degree to which heating is electrified, and the number of electric cars chosen under the transport option determine what the requirement for back-up generation is and how much demand shifting is possible.
@@ -38,5 +34,5 @@
 #right
   #chart
     .figure
-      =image_tag 'structuredQuestions/question51/dinorwig.png'
+      %img{src:'/images/question51/dinorwig.png'}
       .caption Figure 1. Part of the Dinorwig hydroelectric power station, a system that stores energy by pumping 6.7 million m3 of water up around 500 metres and then releasing it to supply 9 GWh of energy at a rate of around 2 GW. Photo © Denis Egan.

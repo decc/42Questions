@@ -45,6 +45,7 @@ setLevel = (new_level) ->
 
 setQuestion = (new_question) ->
   question = new_question
+  level = code[question]
   getQuestion()
 
 window.setQuestion = setQuestion

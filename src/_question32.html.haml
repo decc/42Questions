@@ -9,32 +9,28 @@
       %h2 Level 1
       .description
         %p Level 1 assumes that the mean internal temperature of UK homes during the winter months continues to increase to 20˚C in 2030, then stabilises. Use of air conditioning grows to 50 TWh/y in 2050.
-      = structured_results 1
-
+      
     .choice#choice2
       %h2 Level 2
       .description
         %p Level 2 assumes that the mean temperature increases slightly to 18˚C in 2050. Use of air conditioning grows to 31 TWh/y in 2050.
-      = structured_results 2
-
+      
     .choice#choice3
       %h2 Level 3
       .description
         %p Level 3 assumes that the mean temperature decreases slightly to 17˚C in 2050. Use of air conditioning grows to 14 TWh/y in 2050.
-      = structured_results 3    
-
+      
     .choice#choice4
       %h2 Level 4
       .description
         %p Level 4 assumes that the mean temperature decreases to 16˚C in 2050 , which  is equivalent to the mean internal house temperature in 1990. There is no use of air conditioning in the summer.
         %p Householders can experience today’s levels of thermal comfort while also reducing energy demand by wearing warmer clothing or by heating the house in a smarter way. Using a 13 TOG winter duvet rather than a 12 TOG one offers the same level of thermal comfort in a house with a 1.5˚C lower internal temperature. Similarly, wearing one extra layer of clothing can compensate for a 1.5˚C drop in temperature. For an older home that is otherwise maintained at 17.5˚C, an alternative to reducing the temperature by 1.5°C is to leave it unheated for two or three additional hours per day, which is likely to result in the same energy savings.
         
-      = structured_results 4
-
+      
   #interaction    
 
 #right
   #chart
     .figure
-      =image_tag 'structuredQuestions/question32/historichometemps.png'
+      %img{src:'/images/question32/historichometemps.png'}
       .caption Figure 1. Historic average UK home temperatures during winter (up to 2008) and assumptions about possible futures (2010 onwards). Sizer.

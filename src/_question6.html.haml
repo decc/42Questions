@@ -11,34 +11,30 @@
       %h2 Level 1
       .description
         %p Level 1 assumes there is very little investment in wave power, with no wave machines deployed up to 2050.
-      = structured_results 1
-
+      
     .choice#choice2
       %h2 Level 2
       .description
         %p Level 2 assumes the UK deploys the equivalent of 300 km of Pelamis wave farms in the Atlantic by 2050.  This requires a Pelamis every 
         40 metres over the 300 km stretch, totalling 8000 machines. The machines deliver 8 kW per metre of the wave farm (20% of the waves’ raw power) with an availability of 90% (allowing time for maintenance). The total output of these wave farms is 19 TWh/y.
-      = structured_results 2
-
+      
     .choice#choice3
       %h2 Level 3
       .description
         %p Level 3 assumes that the UK deploys the equivalent of 16 000 Pelamis machines over 600 km of the Atlantic coastline by 2050, delivering the same power per machine as in level 2. 600 km is a little further than the distance between London and Glasgow. The total output of these wave farms is 38 TWh/y.
-      = structured_results 3    
-
+      
     .choice#choice4
       %h2 Level 4
       .description
         %p Level 4 assumes that the UK deploys  the equivalent of around 27 000 Pelamis machines over a 900 km stretch, involving installing the full capacity north of Ireland as well as some off the south-west tip of Cornwall (see Figure 2).These machines are also assumed to be more efficient, delivering 10 kW per metre (25% of the waves’ raw power). With a 90% availability, the total output of such wave farms is 71 TWh/y.
-      = structured_results 4
-
+      
   #interaction
 
 #right
   #chart
     .figure
-      =image_tag 'structuredQuestions/question6/pelamis.png'
+      %img{src:'/images/question6/pelamis.png'}
       .caption Figure 1. A Pelamis wave energy converter is a ‘sea snake’ made of four sections, each the size of a railway locomotive. It faces nose-on towards the incoming waves. Photo © Pelamis wave power.
     .figure
-      =image_tag 'structuredQuestions/question6/wavelength.png'
+      %img{src:'/images/question6/wavelength.png'}
       .caption Figure 2. Map showing 1000 km of potential UK wave farm locations. Level 4 requires 900 km of wave farms.
