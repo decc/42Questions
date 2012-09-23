@@ -1,0 +1,30 @@
+%script{ :type => 'text/javascript' }
+  = render 'structured.js.erb'
+
+#structured
+  = render "sectors/structured/question#{@choice}.html.haml"
+
+#navigation
+  #previous
+    Previous choice: 
+    = previous_question
+  #exit
+    = link_to "Expert view", normalPathwayURL(@pathway.code,:primary_energy_chart), :class => 'pathwayLink'
+  #next
+    Next choice: 
+    = next_question
+  
+.clear &nbsp;
+
+#demand
+  = render 'pathways/demand_choices'
+  
+#supply
+  = render 'pathways/supply_choices'
+
+#ghg
+  = render 'pathways/ghg_choices'
+  
+  %h2 Electricity balancing
+  %table.choice_bars.detail#security_detail
+    = choice_bars @pathway.security_row

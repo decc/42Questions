@@ -1,0 +1,43 @@
+#left
+  #introduction
+    %h1 Domestic passenger transport behaviour
+
+    %p On average, each of us currently travels about 14 000 km per year, excluding trips abroad. 83% of this distance is by car, van or motorcycle, 7% by rail, 6% by bus, 2% on foot, 1% by air and 0.5% by bike.
+
+  #choices
+    .choice#choice1
+      %h2 Level 1
+      .description
+        %p Level 1 assumes that by 2050 each of us travels 1300 km per year more than in 2007, with a slight shift from road and rail to bus and air: 82% road, 6% rail, 7% bus, 2% foot, 2% air and 0.7% bike.
+      = structured_results 1
+
+    .choice#choice2
+      %h2 Level 2
+      .description
+        %p Level 2 assumes that by 2050, each of us travels 900 km per year more than in  2007. Slightly less travel is by road and slightly more by bus: 80% road, 6% rail, 9% bus, 2% foot, 2% air and 0.7% bike. Passenger distance by bus will be 20% higher than in Level 1.
+      = structured_results 2
+
+    .choice#choice3
+      %h2 Level 3
+      .description
+        %p Level 3 assumes that by 2050, each of us travels an extra 900 km per year more than in 2007 and with a substantial shift away from cars towards buses, rail and bikes: 74% road, 8% rail, 13% bus, 2% foot, 2% air and 5% bike. 1 in 20 car trips are shared with one extra person.
+      = structured_results 3    
+
+    .choice#choice4
+      %h2 Level 4
+      .description
+        %p Level 4 assumes that in 2050 each of us travels the same distance per year as today. There is a big shift away from the car: 62% road, 10% rail, 19% bus, 2% foot, 2% air and 5% bike. There is an increase in alternatives to travel such as teleconferencing or more flexible working arrangements. 1 in 10 car trips are shared with one extra person, cycle use will increase 10-fold compared to today, passenger distance by bus will be 250% higher; rail passenger distance will be 115% higher. 
+      = structured_results 4
+
+  #interaction
+    %h2 Interaction with other choices
+    %p We can power the UK’s cars, buses and trains by biofuel rather than diesel or petrol, or rely on electricity or hydrogen fuel cells. In the 2050 Calculator, the technology used and hence the emissions created are influenced by how much transport is electrified, how much electricity is decarbonised, and how much bioenergy is available for transport. 
+
+#right
+  #chart
+    .figure.showChoice1
+      =image_tag 'structuredQuestions/question25/vauxhall ampera.png'
+      .caption In 2007, 83% of distance was by car. Level 1 assumes this is unchanged in 2050. Photo © Vauxhall.
+    .figure.showChoice2.showChoice3.showChoice4
+      =image_tag 'structuredQuestions/question25/bike.png'
+      .caption In 2007, 0.5% of distance travelled was by bicycle. Level 4 assumes that this increases to 4.7% by 2050.

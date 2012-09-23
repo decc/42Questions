@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title 2050 Pathways Calculator
+    = stylesheet
+    = javascript
+%body
+  #implications
+    #ghg
+      GHG:
+      %span#ghg_implication
+      \% reduction on 1990 levels.
+    #cost
+      Total system cost: £
+      %span#cost_implication
+  #onepage
+  #navigation
+    %ul
+    - structure.demand_choices.each do |choice|
+      %li
+        %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+    - structure.supply_choices.each do |choice|
+      %li
+        %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name

@@ -1,0 +1,45 @@
+#left
+  #introduction
+    %h1 Home lighting and appliances
+        
+    %p Domestic ownership of lighting and appliances such as refrigerators, ovens, televisions and computers is steadily increasing. Many such devices are more energy efficient than in the past. Around half of all light bulbs are now more efficient than incandescent models, and the average energy consumed per appliance is falling. 
+
+    %p In the 2050 Calculator the lighting and appliance sector’s future energy use is determined by two factors: demand and efficiency (described here) and technology change (described in a separate note).
+    
+    
+  #choices
+    .choice#choice1
+      %h2 Level 1
+      .description
+        %p Level 1 assumes that energy demand per household declines 20% between 2007 and 2050. There is a general trend towards more energy-efficient equipment, but this is partially counteracted by extra electronics and computers in each home.
+      = structured_results 1
+
+    .choice#choice2
+      %h2 Level 2
+      .description
+        %p Level 2 assumes that demand per household declines 34% by 2050. This involves replacing all appliances with efficient alternatives and using energy displays to monitor and manage home energy consumption.
+      = structured_results 2
+
+    .choice#choice3
+      %h2 Level 3
+      .description
+        %p Level 3 assumes that demand per household declines by 61% by 2050. This involves replacing all lighting with very efficient light emitting diodes (LEDs); appliance manufacturers taking substantial extra steps to improve the energy efficiency of their equipment; and consumers being smarter about how and when they use equipment.
+      = structured_results 3    
+
+    .choice#choice4
+      %h2 Level 4
+      .description
+        %p Level 4 assumes that demand per household declines by 73% by 2050. This involves both technological breakthroughs in the efficiency of equipment and substantial care and attention by householders in how they use energy.  Equipment manufacturers take widescale action to reduce power consumption by their products.
+      = structured_results 4
+
+  #interaction
+
+#right
+  #chart
+    .figure
+      =image_tag 'structuredQuestions/question37/fridge.png'
+      .caption Figure 1. Under level 4 assumptions our fridges would use one-fifth of the energy that they do today. Photo © Lara Love.
+    .figure
+      =image_tag 'structuredQuestions/question37/bulbs.png'
+      .caption Figure 2. Under level 4 assumptions, all household lights would use high efficiency LEDs. Photo © Geoffrey Landis.
+      
