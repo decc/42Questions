@@ -20,6 +20,7 @@ getQuestion = (number=question) ->
   $.get("/_question#{number}", (data, status) ->
     if data?
       $('#onepage').html(data)
+      document.title = $("h1").html()
       setUpEvents()
       highlightChoice()
   )
@@ -42,14 +43,26 @@ setLevel = (new_level) ->
   code[question] = level
   highlightChoice()
   getImplications()
+  pushState()
+  false
 
 setQuestion = (new_question) ->
   question = new_question
   level = code[question]
   getQuestion()
+  pushState()
+  false
 
 window.setQuestion = setQuestion
 
+pushState = () ->
+  return false unless history && history['pushState']?
+  history.pushState(code,code,"/#{code.join("")}/#{question}")
+  
+window.onpopstate = (event) ->
+  setVariablesFromURL()
+  getImplications()
+  getQuestion()
 
 update = () ->
   $('#ghg_implication').html(implications.ghg.percent_reduction_from_1990)
@@ -61,8 +74,9 @@ update = () ->
   else
     cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
   $('#cost_implication').html(cost)
-  console.log implications
 
+# This is called by jQuery when the DOM is ready. Just calls the 
+# setup and then the getImplications methods
 $(document).ready () ->
   setup()
   getImplications()
@@ -78,7 +92,9 @@ setVariablesFromURL = () ->
 # Highlights the current choice (level 1, 2, 3, or 4) on the screen
 highlightChoice = () ->
   $("#choice#{level}").addClass("chosen")
+  $(".showChoice#{level}").show()
 
 # Unhighlights the current choice (level 1, 2, 3, or 4) on the screen
 unHighlightChoice = () ->
   $("#choice#{level}").removeClass("chosen")
+  $(".showChoice#{level}").hide()
