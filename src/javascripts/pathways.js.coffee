@@ -64,6 +64,19 @@ window.onpopstate = (event) ->
   getImplications()
   getQuestion()
 
+window.previousQuestion = () ->
+  moveAlongQuestionSequence(-1)
+
+window.nextQuestion = () ->
+  moveAlongQuestionSequence(+1)
+
+moveAlongQuestionSequence = (delta) ->
+  sequence = window.question_sequence
+  position_in_sequence = sequence.indexOf(question) + delta
+  position_in_sequence = 0 if position_in_sequence >= sequence.length
+  position_in_sequence = sequence.length - 1 if position_in_sequence < 0
+  setQuestion(sequence[position_in_sequence])
+
 update = () ->
   $('#ghg_implication').html(implications.ghg.percent_reduction_from_1990)
   window.adjust_costs_of_pathway(implications)
@@ -74,6 +87,7 @@ update = () ->
   else
     cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
   $('#cost_implication').html(cost)
+
 
 # This is called by jQuery when the DOM is ready. Just calls the 
 # setup and then the getImplications methods

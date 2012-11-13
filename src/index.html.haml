@@ -1,24 +1,46 @@
 !!!
-%html
+%html{lang: 'en'}
   %head
     %title 2050 Pathways Calculator
     = stylesheet
     = javascript
-%body
-  #implications
-    #ghg
-      GHG:
-      %span#ghg_implication
-      \% reduction on 1990 levels.
-    #cost
-      Total system cost: £
-      %span#cost_implication
+%body.container
+  #implications.navbar
+    .navbar-inner
+      %a.brand{href:'2050-calculator-tool.decc.gov.uk'} DECC 2050 Pathways Calculator
+      #ghg
+        GHG:
+        %span#ghg_implication
+        \% reduction on 1990 levels.
+      #cost
+        Total system cost:
+        %span#cost_implication
   #onepage
-  #navigation
-    %ul
-    - structure.demand_choices.each do |choice|
-      %li
-        %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
-    - structure.supply_choices.each do |choice|
-      %li
-        %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+  .row
+    .span4.offset4
+      #navigation.btn-group
+        %a.btn{href:"", onclick: 'window.previousQuestion(); return false;'} 
+          %i.icon-chevron-left
+          Previous sector
+        %a.btn.dropdown-toggle{'data-toggle' => "dropdown", "href" => "#"}
+          Jump to a sector
+          %span.caret
+        %ul.dropdown-menu{role:"menu"}
+          - structure.demand_choices.each do |choice|
+            %li
+              %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+          %li.divider
+          - structure.supply_choices.each do |choice|
+            %li
+              %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+          %li.divider
+          - choice = structure.geosequestration_choice
+          %li
+            %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+          %li.divider
+          - choice = structure.balancing_choice
+          %li
+            %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
+        %a.btn#next_sector{href:"", onclick: 'window.nextQuestion(); return false;'} 
+          Next sector
+          %i.icon-chevron-right

@@ -8,7 +8,9 @@ if ENV['RACK_ENV'] == 'development'
     environment.append_path 'src/javascripts'
     environment.append_path 'src/stylesheets'
     environment.append_path 'public/assets'
-    environment.append_path 'contrib'
+    environment.append_path 'contrib/js'
+    environment.append_path 'contrib/css'
+    environment.append_path 'contrib/img'
 
     environment.context_class.class_eval do 
       include Helper

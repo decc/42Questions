@@ -7,6 +7,7 @@
 
 // First the support libs
 //= require jquery.min
+//= require bootstrap.min
 //= require jstorage.min
 
 // Now the common methods
