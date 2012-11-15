@@ -32,7 +32,7 @@ require_relative 'src/helper'
 manifest = './public/assets/manifest.json'
 file manifest => ['assets']  
 
-desc "Compiles changes to src/index.html.haml into public/index.html and adds links it to the latest versions of application.cs and application.js"
+desc "Compiles changes to src/*.haml into public/ and adds links it to the latest versions of application.cs and application.js"
 task 'html' => [manifest] do 
 
   class Context
@@ -44,9 +44,13 @@ task 'html' => [manifest] do
   # We need to figure out the filename of the latest javascript and css
   context.assets = JSON.parse(IO.readlines(manifest).join)['assets']
 
-  input = IO.readlines('./src/index.html.haml').join
-  File.open('./public/index.html','w') do |f|
-    f.puts Haml::Engine.new(input).render(context)
+  haml_files = Dir.glob("./src/*.haml")
+  haml_files.each do |name|
+    p "Compiling #{name}"
+    input = IO.readlines(name).join
+    File.open("./public/"+name[/\.\/src\/(.*)\.haml/,1],'w') do |f|
+      f.puts Haml::Engine.new(input).render(context)
+    end
   end
 end
 

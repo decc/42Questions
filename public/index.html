@@ -2,30 +2,21 @@
 <html lang='en'>
   <head>
     <title>2050 Pathways Calculator</title>
-    <link href='/assets/application-92f2846bdb645a6235e0e698b1027358.css' media='screen' rel='stylesheet' type='text/css' />
-    <script src='/assets/application-365190963b01646aa4295d8bbd9b1b5c.js' type='text/javascript'></script>
+    <link href='/assets/application-70b949b261ccd784627e5905f49f6ff5.css' media='screen' rel='stylesheet' type='text/css' />
+    <script src='/assets/application-73e9d60a7d60debce2dbe786752d7bff.js' type='text/javascript'></script>
   </head>
 </html>
 <body class='container'>
   <div class='navbar' id='implications'>
     <div class='navbar-inner'>
-      <a class='brand' href='2050-calculator-tool.decc.gov.uk'>DECC 2050 Pathways Calculator</a>
-      <div id='ghg'>
-        GHG:
-        <span id='ghg_implication'></span>
-        % reduction on 1990 levels.
-      </div>
-      <div id='cost'>
-        Total system cost: £
-        <span id='cost_implication'></span>
-      </div>
+      <a class='brand' href='/'>DECC 2050 Pathways Calculator</a>
     </div>
   </div>
   <div id='onepage'></div>
   <div class='row'>
     <div class='span4 offset4'>
       <div class='btn-group' id='navigation'>
-        <a class='btn' href=''>
+        <a class='btn' href='' onclick='window.previousQuestion(); return false;'>
           <i class='icon-chevron-left'></i>
           Previous sector
         </a>
@@ -155,8 +146,16 @@
           <li>
             <a href='#' onclick='window.setQuestion(22)'>Bioenergy imports</a>
           </li>
+          <li class='divider'></li>
+          <li>
+            <a href='#' onclick='window.setQuestion(50)'>Geosequestration</a>
+          </li>
+          <li class='divider'></li>
+          <li>
+            <a href='#' onclick='window.setQuestion(51)'>Storage, demand shifting & interconnection</a>
+          </li>
         </ul>
-        <a class='btn' href=''>
+        <a class='btn' href='' id='next_sector' onclick='window.nextQuestion(); return false;'>
           Next sector
           <i class='icon-chevron-right'></i>
         </a>
