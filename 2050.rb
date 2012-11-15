@@ -8,8 +8,8 @@ get '/' do
   redirect to("/1111111111111111111111111111111111111111111111111111/0")
 end
 
-get %r|/(_question\d+)|, :provides => :html do |question|
-  haml "#{question}.html".to_sym
+get %r|/(_question\d+.html)|, :provides => :html do |question|
+  haml "#{question}".to_sym
 end
 
 get '/:id', :provides => :json do |id|

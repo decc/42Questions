@@ -76,7 +76,7 @@ updateImplicationTextForLevel = (possible_level) ->
 # of the different levels are requested from the server.
 getQuestion = (number=question) ->
   implications_of_different_levels = [undefined, undefined, undefined, undefined]
-  $.get("/_question#{number}", (data, status) ->
+  $.get("/_question#{number}.html", (data, status) ->
     if data?
       $('#onepage').html(data)
       document.title = $("h1").html()
