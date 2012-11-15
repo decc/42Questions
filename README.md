@@ -1,21 +1,21 @@
 # DECC 2050 CALCULATOR TOOL
 
-A web interface to the www.decc.gov.uk 2050 energy and climate change calculator
+An experimental alternative web interface to the www.decc.gov.uk 2050 energy and climate change calculator
 
 Further detail on the project:
 http://www.decc.gov.uk/2050
 
 Canonical source:
+http://github.com/decc/42Questions
+
+Original interface
 http://github.com/decc/twenty-fifty
 
 # INSTALATION
 
-See script/setup-2050-server-script.sh for an example of how to setup a server from a clean bare Ubuntu linux installation.
-
-Otherwise:
 1. Install ruby 1.9.2 or greater (including development headers)
 2. 'gem install bundler' or 'sudo gem install bundler'
-3. cd twenty_fifty
+3. cd 42Questions
 4. bundle
 
 # RUNNING
@@ -24,7 +24,7 @@ It can run in two modes, 'production' and 'development'.
 
 Production is what you usually want:
 
-1. cd twenty_fifty
+1. cd 42Questions
 2. ruby 2050.rb -e production
 3. Navigate to http://0.0.0.0:4567 in your web browser
 
