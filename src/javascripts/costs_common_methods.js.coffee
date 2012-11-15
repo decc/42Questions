@@ -117,6 +117,20 @@ calculateIncrementalCost = (pt,pc) ->
         cc += cvalues.low_adjusted
   {tc: tc, tt: tt, cc: cc, ct: ct}
 
+direction = (value) ->
+  return "more expensive" if value > 0
+  "cheaper"
+
+window.incremental_cost_in_words = (p, c) ->
+    i = calculateIncrementalCost(p,c)
+    i1 = i.tc - i.cc
+    i2 = i.tt - i.ct
+    if i1 == i2
+      "£#{Math.round(Math.abs(i1))}/person/year #{direction(i1)}"
+    else
+      "£#{Math.round(Math.abs(i2))}/person/year #{direction(i2)} and £#{Math.round(Math.abs(i1))}/person/year #{direction(i1)}"
+  
+
 window.adjust_costs_of_pathway = adjust_costs_of_pathway
 window.calculateIncrementalCost = calculateIncrementalCost
 window.cost_override_in_place_warning = cost_override_in_place_warning
