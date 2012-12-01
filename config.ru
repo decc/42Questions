@@ -1,8 +1,17 @@
 # encoding: utf-8
-if ENV['RACK_ENV'] == 'development'
+require 'rubygems'
+require 'bundler'
+Bundler.setup
+
+require './2050'
+require 'sprockets'
+require './src/helper'
+
+ENV['RACK_ENV'] = ENV['RAILS_ENV'] if ENV['RAILS_ENV']
+
+map '/' do
+  use Rack::CommonLogger
   map '/assets' do
-    require 'sprockets'
-    require './src/helper'
     environment = Sprockets::Environment.new
 
     environment.append_path 'src/javascripts'
@@ -18,10 +27,6 @@ if ENV['RACK_ENV'] == 'development'
 
     run environment
   end
-end
 
-
-require './2050'
-map '/' do
   run Sinatra::Application
 end
