@@ -22,8 +22,6 @@ Rake::SprocketsTask.new do |t|
   t.assets      = %w( application.js application.css )
 end
 
-
-
 require 'haml'
 require 'json'
 require 'decc_2050_model'
@@ -54,4 +52,8 @@ task 'html' => [manifest] do
   end
 end
 
-
+desc "Cleans out the html from the public folder"
+task 'clean' do
+  File.delete(*Dir.glob("./public/*.html"))
+end
+  
