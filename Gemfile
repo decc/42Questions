@@ -5,7 +5,7 @@ gem 'sinatra'
 # Views
 gem 'json'
 gem 'sass'
-gem 'haml'
+gem 'haml', "3.2.0.rc.1"
 gem 'uglifier'#, '>= 1.0.3'
 gem 'sprockets'
 gem 'coffee-script'

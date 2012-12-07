@@ -13,6 +13,10 @@ module Helper
     "<script src='/assets/#{assets['application.js'] || 'application.js'}' type='text/javascript'></script>"
   end
 
+  def choices(c)
+    { data: { choice: Hash[c.map { |k,v| [k.downcase.gsub(/[^A-Za-z0-9]+/,'-'), v] }] } }
+  end
+
   def assets
     @assets ||= {}
   end

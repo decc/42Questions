@@ -5,11 +5,12 @@ require 'json'
 enable :lock # The C 2050 model is not thread safe
 
 get '/' do 
-  redirect to("/1111111111111111111111111111111111111111111111111111/0")
+  redirect to("/1111111111111111111111111111111111111111111111111111/question0")
 end
 
-get %r|/(_question\d+.html)|, :provides => :html do |question|
-  haml "#{question}".to_sym
+get '/question/:question_name', :provides => :html do |question_name|
+  p question_name
+  haml "_#{question_name}".to_sym
 end
 
 get '/:id', :provides => :json do |id|

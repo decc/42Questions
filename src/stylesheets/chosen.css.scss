@@ -1,10 +1,17 @@
-.choice {
+.trajectory {
   margin-bottom: 10px;
   border: solid 2px #fff;
+  cursor: pointer;
 }
 
 .chosen {
-  border: solid 2px #cc0;
+  border: solid 2px #ccc;
+  background-color: #eee;
+}
+
+.highlight {
+  border: solid 2px #0cc;
+  background-color: #6cc;
 }
 
 .performance {

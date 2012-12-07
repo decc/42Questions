@@ -4,36 +4,11 @@
     %title 2050 Pathways Calculator
     = stylesheet
     = javascript
-%body.container
-  #implications.navbar
-    .navbar-inner
-      %a.brand{href:'/'} DECC 2050 Pathways Calculator
+%body
+  #implications
   #onepage
-  .row
-    .span4.offset4
-      #navigation.btn-group
-        %a.btn{href:"", onclick: 'window.previousQuestion(); return false;'} 
-          %i.icon-chevron-left
-          Previous sector
-        %a.btn.dropdown-toggle{'data-toggle' => "dropdown", "href" => "#"}
-          Jump to a sector
-          %span.caret
-        %ul.dropdown-menu{role:"menu"}
-          - structure.demand_choices.each do |choice|
-            %li
-              %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
-          %li.divider
-          - structure.supply_choices.each do |choice|
-            %li
-              %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
-          %li.divider
-          - choice = structure.geosequestration_choice
-          %li
-            %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
-          %li.divider
-          - choice = structure.balancing_choice
-          %li
-            %a{ onclick: "window.setQuestion(#{choice.number})", href: "#"}= choice.name
-        %a.btn#next_sector{href:"", onclick: 'window.nextQuestion(); return false;'} 
-          Next sector
-          %i.icon-chevron-right
+  #navigation
+    %a.btn{href:"", onclick: 'window.previousQuestion(); return false;'} 
+      Previous sector
+    %a.btn#next_sector{href:"", onclick: 'window.nextQuestion(); return false;'} 
+      Next sector
