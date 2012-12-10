@@ -32,6 +32,8 @@ loadQuestion = () ->
       $('#onepage').trigger('questionLoaded')
   )
 
+$(document).on('questionChanged', loadQuestion)
+
 # This clears all the previous question's content - important to prevent memory leaks
 clearPreviousQuestion = () ->
   $('#onepage').empty()
@@ -159,6 +161,25 @@ window.standardQuestion = ( arg ) ->
           .click( chooseTrajectory(possible_trajectory) )
 
   $('#onepage').on('questionLoaded', setupQuestion)
+
+  question_sequence = [
+    'question0'
+    'residential_heating'
+  ]
+  
+  incrementQuestionBy = (increment) ->
+    i = question_sequence.indexOf(question_name)
+    i = i + increment
+    i = question_sequence.length - 1 if i < 0
+    i = 0 if i >= question_sequence.length
+    question_name = question_sequence[i]
+    $(document).trigger('questionChanged')
+
+  window.nextQuestion = () ->
+    incrementQuestionBy 1
+
+  window.previousQuestion = () ->
+    incrementQuestionBy -1
 
 # # This array contains the implications of the different levels for the current question
 # implications_of_different_levels = [undefined, undefined, undefined, undefined]
