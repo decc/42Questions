@@ -14,9 +14,17 @@
   background-color: #6cc;
 }
 
-.performance {
-  margin-left: 40px;
-  color: #aaa;
+.trajectory {
+  max-width: 60%;
+}
+
+.figure {
+  float: right;
+  max-width: 30%;
+
+  img, .caption {
+    max-width: 100%;
+  }
 
 }
 

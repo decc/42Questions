@@ -1,38 +1,6 @@
-:coffeescript
-  sector = 7
-  trajectory = 0
+:javascript
+  standardQuestion({sectors: [7], numberOfPossibleTrajectories: [4]})
 
-  highlight = (highlight_trajectory) ->
-    () ->
-      window.code[sector] = highlight_trajectory
-      $(".trajectory").removeClass("highlight")
-      $(".trajectory"+highlight_trajectory).addClass("highlight")
-      window.updateImplication()
-
-  unHighlight = (highlight_trajectory) ->
-    () ->
-      window.code[sector] = trajectory
-      $(".trajectory"+highlight_trajectory).removeClass("highlight")
-      window.updateImplication()
-
-  chooseTrajectory = (new_trajectory) ->
-    () ->
-      trajectory = new_trajectory
-      window.code[sector] = trajectory
-      $(".trajectory").removeClass("highlight")
-      $(".trajectory").removeClass("chosen")
-      $(".trajectory"+trajectory).addClass("chosen")
-      window.updateImplication()
-      window.notifyPathwayChanged()
-
-  window.setupQuestion = () ->
-    trajectory = window.code[sector]
-    chooseTrajectory(trajectory)()
-    for possible_trajectory in [1..4]
-      $('.trajectory'+possible_trajectory)
-        .hover( highlight(possible_trajectory), unHighlight(possible_trajectory) )
-        .click( chooseTrajectory(possible_trajectory) )
-  
 %h1 How many tidal stream devices should be installed?
 
 %p Tidal stream technologies harness the energy from the tides using underwater turbines. In 2007 there were only experimental tidal stream machines in the UK. There remains considerable uncertainty about the tidal stream resource in British waters.

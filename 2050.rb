@@ -9,7 +9,6 @@ get '/' do
 end
 
 get '/question/:question_name', :provides => :html do |question_name|
-  p question_name
   haml "_#{question_name}".to_sym
 end
 

@@ -29,8 +29,7 @@ loadQuestion = () ->
   $.get("/question/#{question_name}.html", (data, status) ->
     if data?
       $('#onepage').html(data)
-      document.title = $("h1").html()
-      window.setupQuestion()
+      $('#onepage').trigger('questionLoaded')
   )
 
 # This clears all the previous question's content - important to prevent memory leaks
@@ -41,8 +40,7 @@ current_emissions_reduction = undefined
 current_cost_low = undefined
 current_cost_high = undefined
 
-window.updateImplication = () ->
-  data(window.code, updateImplicationCallback)
+$(document).on('pathwayChanged', () -> data(window.code, updateImplicationCallback))
 
 cache = {}
 data = (code, callback) ->
@@ -66,14 +64,101 @@ updateImplicationCallback = (data) ->
      cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
    target.append("Greenhouse gas emissions fall #{ghg}% 1990-2050. <br/>Costs average #{cost}.")
 
-window.notifyPathwayChanged = () ->
-   return false unless history && history['pushState']?
-   return false if history.state == code
-   history.pushState(code,code,"/#{window.code.join("")}/#{question_name}")
+$(document).on('choiceMade', () ->
+    return false unless history && history['pushState']?
+    return false if history.state == code
+    history.pushState(code,code,"/#{window.code.join("")}/#{question_name}")
+)
 
 # FIXME: This doesn't seem to work properly
 window.onpopstate = () ->
    setVariablesFromURL()
+
+window.standardQuestion = ( arg ) ->
+  sectors = arg.sectors
+  possibleTrajectories = arg.numberOfPossibleTrajectories
+  trajectory = []
+  
+  # This takes an array of possible levels and returns
+  # all its possible combinations.
+  # e.g., combinations([4]) => [[1],[2],[3],[4]]
+  # e.g., combinations([4,2]) => [[1,1], [1,2], [2,1], ... [4,1], [4,2]]
+  combinations = (maximums, i = 0) ->
+    if i >= (maximums.length-1)
+      ([j] for j in [1..maximums[i]])
+    else
+      sub_combinations = combinations(maximums, i+1)
+      combinations_at_this_level = []
+      for level in [1..maximums[i]]
+        for combination in sub_combinations
+          c = combination.slice()
+          c.unshift(level)
+          combinations_at_this_level.push(c)
+      combinations_at_this_level
+
+  # This returns a trajectory class for a particular trajectory
+  trajectoryClass = (t) ->
+    ".trajectory"+t.join('')
+
+  highlight = (highlight_trajectory) ->
+    () ->
+      # Set the code
+      for s, i in sectors
+        window.code[s] = highlight_trajectory[i]
+
+      # Update the CSS
+      $(".trajectory").removeClass("highlight")
+      $(trajectoryClass(highlight_trajectory)).addClass("highlight")
+
+      # Notify that the implications need updating
+      $(document).trigger('pathwayChanged')
+
+  unHighlight = (highlight_trajectory) ->
+    () ->
+      # Set the code
+      for s, i in sectors
+        window.code[s] = trajectory[i]
+
+      # Update the CSS
+      $(trajectoryClass(highlight_trajectory)).removeClass("highlight")
+
+      # Notify that the implications need updating
+      $(document).trigger('pathwayChanged')
+
+  chooseTrajectory = (new_trajectory) ->
+    () ->
+      # Set the code
+      trajectory = new_trajectory
+      for s, i in sectors
+        window.code[s] = trajectory[i]
+      
+      # Update the CSS
+      $(".trajectory").removeClass("highlight")
+      $(".trajectory").removeClass("chosen")
+      $(trajectoryClass(trajectory)).addClass("chosen")
+
+      # Notify that the implication needs updating
+      $(document).trigger('pathwayChanged')
+      $(document).trigger('choiceMade')
+
+  setupQuestion = () ->
+    # Setup the title
+    document.title = $("h1").html()
+
+    # Figure out the current trajectory for the sectorss we care about
+    for s, i in sectors
+      trajectory[i] = window.code[s]
+    
+    # Make sure we display the correct trajectory onscreen
+    chooseTrajectory(trajectory)()
+
+    # Now setup all the controls
+    for possible_trajectory in combinations(possibleTrajectories)
+      $(trajectoryClass(possible_trajectory))
+          .hover( highlight(possible_trajectory), unHighlight(possible_trajectory) )
+          .click( chooseTrajectory(possible_trajectory) )
+
+  $('#onepage').on('questionLoaded', setupQuestion)
 
 # # This array contains the implications of the different levels for the current question
 # implications_of_different_levels = [undefined, undefined, undefined, undefined]
