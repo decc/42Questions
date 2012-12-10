@@ -29,7 +29,6 @@ loadQuestion = () ->
   $.get("/question/#{question_name}.html", (data, status) ->
     if data?
       $('#onepage').html(data)
-      $('#onepage').trigger('questionLoaded')
   )
 
 $(document).on('questionChanged', loadQuestion)
@@ -160,7 +159,7 @@ window.standardQuestion = ( arg ) ->
           .hover( highlight(possible_trajectory), unHighlight(possible_trajectory) )
           .click( chooseTrajectory(possible_trajectory) )
 
-  $('#onepage').on('questionLoaded', setupQuestion)
+  setupQuestion()
 
   question_sequence = [
     'question0'
