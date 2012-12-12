@@ -3,3 +3,5 @@
 .powenv
 
 *.swp
+
+tmp/restart.txt
