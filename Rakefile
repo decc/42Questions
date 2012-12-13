@@ -42,7 +42,7 @@ task 'html' => [manifest] do
   # We need to figure out the filename of the latest javascript and css
   context.assets = JSON.parse(IO.readlines(manifest).join)['assets']
 
-  haml_files = Dir.glob("./src/*.haml")
+  haml_files = Dir.glob("./src/**/*.haml")
   haml_files.each do |name|
     p "Compiling #{name}"
     input = IO.readlines(name).join
