@@ -9,7 +9,7 @@ get '/' do
 end
 
 get '/question/:question_name', :provides => :html do |question_name|
-  haml "question/_#{question_name}".to_sym
+  haml "question/#{question_name}".to_sym
 end
 
 get '/:id', :provides => :json do |id|
