@@ -30,8 +30,8 @@ require_relative 'src/helper'
 manifest = './public/assets/manifest.json'
 file manifest => ['assets']  
 
-desc "Compiles changes to src/*.haml into public/ and adds links it to the latest versions of application.cs and application.js"
-task 'html' => [manifest] do 
+desc "Compiles changes to src/*.haml into public/ and adds links it to the latest versions of application.cs and application.js, then sets so that the pow server will operate in production mode"
+task 'production' => [manifest] do 
 
   class Context
     include Helper
@@ -50,10 +50,13 @@ task 'html' => [manifest] do
       f.puts Haml::Engine.new(input).render(context)
     end
   end
+  File.open('./.powenv','w') { |f| f.puts "export RAILS_ENV=production" }
 end
 
-desc "Cleans out the html from the public folder"
-task 'clean' do
+desc "Cleans out the html from the public folder and sets so that a pow server will operate in development mode"
+task 'development' do
   File.delete(*Dir.glob("./public/*.html"))
+  File.delete(*Dir.glob("./public/questions/*.html"))
+  File.open('./.powenv','w') { |f| f.puts "export RAILS_ENV=development" }
 end
   

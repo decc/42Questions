@@ -10,7 +10,7 @@ $(document).ready () ->
 
 # We need to keep track of the current pathway and the current question
 window.code = "1111111111111111111111111111111111111111111111111111".split("")
-question_name = "question0"
+question_name = "nuclear"
 
 # In order to do the sideways scrolling trick, we need to know some layout things
 window_width = undefined
@@ -23,7 +23,9 @@ setVariablesFromURL = () ->
   url_elements = window.location.pathname.split('/')
   window.code = url_elements[1].split("")
   question_name = url_elements[2]
-  loadQuestion()
+  $(document)
+    .trigger('pathwayChanged')
+    .trigger('questionChanged')
 
 # This is used to change which question we are viewing on screen.
 # It sends a request for the description of the question to the server.
@@ -180,9 +182,9 @@ window.standardQuestion = ( arg ) ->
   setupQuestion()
 
 question_sequence = [
-  'question0'
+  'nuclear'
+  'ccs'
   'residentialHeating'
-  'question1'
 ]
 
 question_divs = undefined
@@ -198,10 +200,11 @@ setupLayout = () ->
   $('#questions')
     .width(window_width)
     .height(1000)
-    .append("<div style='position: absolute; width: #{question_margin}px; left: #{question_divs.length * window_width}px'>&nbsp;</div>")
+    .append("<div style='position: absolute; width: #{question_margin}px; left: #{question_divs.length * window_width}px; top: 100px;'>&nbsp;</div>")
   question_divs
     .width(window_width-30-question_margin)
     .css('left', (i) -> (i*window_width) + (question_margin/2))
+    .css('top', 100)
 
 # FIXME: I don't get callbacks, why can't I pass the animateToQuestion function directly?
 $(document).on('questionChanged', () -> animateToQuestion() )
