@@ -5,6 +5,7 @@
 $(document).ready () ->
   setupQuestionDivs()
   setupLayout()
+  setupImplications()
   setVariablesFromURL()
   setupNextPreviousButtons()
 
@@ -60,18 +61,24 @@ current_emissions_reduction = undefined
 current_cost_low = undefined
 current_cost_high = undefined
 
+ghgSparkline = undefined
+
+setupImplications = () ->
+  ghgSparkline = window.sparkline({target: 'ghgSparkline'})
+
 updateImplicationCallback = (data) ->
-   target = $("#implications")
-   target.empty()
-   ghg = data.ghg.percent_reduction_from_1990
-   window.adjust_costs_of_pathway(data)
-   low = Math.round(data.total_cost_low_adjusted)
-   high = Math.round(data.total_cost_high_adjusted)
-   if Math.abs(high-low) < 1
-     cost = "£#{low}/person/year 2010-2050"
-   else
-     cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
-   target.append("Greenhouse gas emissions fall #{ghg}% 1990-2050. <br/>Costs average #{cost}.")
+  ghgSparkline(data.ghg.Total)
+  # target = $("#implications")
+  # target.empty()
+  # ghg = data.ghg.percent_reduction_from_1990
+  # window.adjust_costs_of_pathway(data)
+  # low = Math.round(data.total_cost_low_adjusted)
+  # high = Math.round(data.total_cost_high_adjusted)
+  # if Math.abs(high-low) < 1
+  #   cost = "£#{low}/person/year 2010-2050"
+  # else
+  #   cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
+  # target.append("Greenhouse gas emissions fall #{ghg}% 1990-2050. <br/>Costs average #{cost}.")
 
 $(document).on('choiceMade', () -> updateURL() )
 $(document).on('questionChanged', () -> updateURL() )
@@ -141,7 +148,8 @@ window.standardQuestion = ( arg ) ->
         window.code[s] = trajectory[i]
 
       # Update the CSS
-      target.find(trajectoryClass(highlight_trajectory)).removeClass("highlight")
+      target.find(".trajectory").removeClass("highlight")
+      target.find(trajectoryClass(trajectory)).addClass("highlight")
 
       # Notify that the implications need updating
       $(document).trigger('pathwayChanged')
@@ -152,11 +160,21 @@ window.standardQuestion = ( arg ) ->
       trajectory = new_trajectory
       for s, i in sectors
         window.code[s] = trajectory[i]
-      
+    
+      selected = target.find(trajectoryClass(trajectory))
+
       # Update the CSS
       target.find(".trajectory").removeClass("highlight")
       target.find(".trajectory").removeClass("chosen")
-      target.find(trajectoryClass(trajectory)).addClass("chosen")
+      selected.addClass("chosen")
+
+      # Briefly highlight the selected node
+      d3.selectAll(selected)
+        .style('background-color','#ff7259')
+        .transition()
+        .duration(1000)
+        .style('background-color','#f3dc00')
+        .each('end', () -> d3.select(@).style('background-color',null))
 
       # Notify that the implication needs updating
       $(document).trigger('pathwayChanged')
@@ -172,6 +190,7 @@ window.standardQuestion = ( arg ) ->
     
     # Make sure we display the correct trajectory onscreen
     chooseTrajectory(trajectory)()
+    target.find(trajectoryClass(trajectory)).addClass("highlight")
 
     # Now setup all the controls
     for possible_trajectory in combinations(possibleTrajectories)

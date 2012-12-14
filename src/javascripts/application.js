@@ -9,9 +9,12 @@
 //= require jquery.min
 //= require bootstrap.min
 //= require jstorage.min
+//= require raphael-min
+//= require d3.v2.min
 
 // Now the common methods
 //= require model_structure
 //= require pathways
 //= require costs_common_methods
+//= require sparkline
 

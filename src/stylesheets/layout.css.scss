@@ -20,7 +20,7 @@ body {
   left: 0px;
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .question {
@@ -34,3 +34,6 @@ body {
   }
 }
 
+.sparkline {
+  display: inline-block;
+}
