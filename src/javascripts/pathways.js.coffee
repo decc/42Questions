@@ -10,7 +10,7 @@ $(document).ready () ->
   setupNextPreviousButtons()
 
 # We need to keep track of the current pathway and the current question
-window.code = "1111111111111111111111111111111111111111111111111111".split("")
+window.code = "10111111111111110111111001111110111101101101110110111".split("")
 question_name = "nuclear"
 
 # In order to do the sideways scrolling trick, we need to know some layout things
@@ -61,16 +61,81 @@ current_emissions_reduction = undefined
 current_cost_low = undefined
 current_cost_high = undefined
 
-ghgSparkline = undefined
+updown = (number) ->
+  if number > 0
+    "up #{number}"
+  else if number < 0
+    "down #{-number}"
+  else
+    "#{number}"
+
 
 setupImplications = () ->
-  ghgSparkline = window.sparkline({target: 'ghgSparkline'})
+  #  Nowt
 
 updateImplicationCallback = (data) ->
-  ghgSparkline(data.ghg.Total)
+  window.data = data
+
+  # Code
+  target = $("#choices table#code")
+  target.empty()
+  target.append("<tr id='supply'></tr>")
+  target.append("<tr id='demand'></tr>")
+  target.append("<tr id='other'></tr>")
+
+  supply = window.code.slice(0,22)
+  demand = window.code.slice(23,49)
+  other = window.code.slice(50,53)
+
+  row = $("#code tr#supply")
+  for c in supply
+    unless c == "0"
+      row.append("<td>#{c}</td>")
+    false
+  
+  row = $("#code tr#demand")
+  for c in demand
+    unless c == "0"
+      row.append("<td>#{c}</td>")
+  
+  row = $("#code tr#other")
+  for c in other
+    unless c == "0"
+      row.append("<td>#{c}</td>")
+    false
+ 
+  # Cost
+  window.adjust_costs_of_pathway(data)
+  low = Math.round(data.total_cost_low_adjusted)
+  high = Math.round(data.total_cost_high_adjusted)
+  if Math.abs(high-low) < 1
+     cost = "£#{low}/person/year 2010-2050"
+  else
+     cost = "£#{low}&mdash;#{high}/person/year 2010-2050"
+  $("#implications #cost").html("The average cost of this pathway is #{cost}")
+ 
+  # Demand
+  demand_change = Math.round(data.final_energy_demand["Total Use"][8] - data.final_energy_demand["Total Use"][0])
+  $("#implications #demand").html("In this pathway, by 2050, energy demand #{updown(demand_change)} TWh/yr on 2010")
+
+  # Supply
+  supply_in_2050 = for k, v of data.primary_energy_supply
+    { name: k, value: v[8] }
+
+  supply_in_2050 = supply_in_2050.sort( (a,b) -> b.value - a.value )
+  total = supply_in_2050[0].value
+  words = for fuel in supply_in_2050.slice(1,4)
+    "#{fuel.name}: #{Math.round(fuel.value * 100.0 / total)}%"
+
+  $("#implications #supply").html("The principal fuels are: #{words.join(" ")}<br/>")
+
+  # Emissions
+  ghg = data.ghg.percent_reduction_from_1990
+  $("#implications #emissions").html("Greenhouse gas emissions #{updown(-ghg)}% on 1990")
+  
+  
   # target = $("#implications")
   # target.empty()
-  # ghg = data.ghg.percent_reduction_from_1990
   # window.adjust_costs_of_pathway(data)
   # low = Math.round(data.total_cost_low_adjusted)
   # high = Math.round(data.total_cost_high_adjusted)

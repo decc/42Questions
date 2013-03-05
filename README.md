@@ -30,9 +30,11 @@ Production is what you usually want:
 
 Development takes more effort to set up, but then reloads various files on each page request, making development easier:
 
-1. gem install thin
-2. thin -R config.ru start -p 4567
-3. Navigate to http://0.0.0.0:4567 in your web browser
+1. cd 42Questions
+2. rackup
+3. Navigate to http://0.0.0.0:9292 in your web browser
+
+Note: If the development version doesn't seem to be working, try deleting public/index.html
 
 # HACKING
 

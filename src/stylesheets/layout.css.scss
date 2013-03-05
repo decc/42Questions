@@ -1,8 +1,12 @@
 body {
   background-color: #d6d6d6;
 }
+#twentyfiftybanner { width: 100%; position: absolute; top: 0px; left: 0px; margin: 0px; background-color: #000; color: #fff; padding-left: 10px;}
+#twentyfiftybanner a { margin-right: 10px; color: #ccc }
+#twentyfiftybanner a.current { color: #fff }
+#twentyfiftybanner #signout {float: right;margin-right: 10px;}
 
-#implications {
+#pathway {
   width: 100%;
   z-index: 1;
   border: solid 1px #000;
@@ -10,8 +14,46 @@ body {
   box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
   padding: 15px;
   position: fixed;
-  top: 0px;
+  top: 15px;
   left: 0px;
+
+  div {
+    float: left;
+  }
+
+  #title {
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    .top {
+      font-size: 45px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+    .bottom {
+      margin-top: -10px;
+      padding-top: 0px;
+      font-size: 14px;
+    }
+
+  }
+  
+  #choices {
+    width: 150px;
+    font-size: 10px;
+    #code {
+      display: inline;
+      a {
+        margin-right: 0.1em;
+      }
+    }
+  }
+
+  #implications {
+    font-size: 10px;
+  }
 }
 
 #questions {
