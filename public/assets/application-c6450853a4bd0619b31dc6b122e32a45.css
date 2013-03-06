@@ -1,0 +1,104 @@
+body {
+  background-color: #d6d6d6; }
+
+#twentyfiftybanner {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  background-color: #000;
+  color: #fff;
+  padding-left: 10px; }
+
+#twentyfiftybanner a {
+  margin-right: 10px;
+  color: #cccccc; }
+
+#twentyfiftybanner a.current {
+  color: white; }
+
+#twentyfiftybanner #signout {
+  float: right;
+  margin-right: 10px; }
+
+#pathway {
+  z-index: 1;
+  width: 30em;
+  height: 7em;
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+  background-color: #fff;
+  box-shadow: 0px 0 10px 10px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  color: black;
+  font-size: 11px; }
+  #pathway h2 {
+    font-weight: normal;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin: 0px; }
+
+#question {
+  margin: 30px;
+  border: solid 1px black;
+  background-color: #fff;
+  padding: 15px; }
+  #question h1 {
+    text-align: center; }
+#next_sector, #previous_sector {
+  display: block;
+  position: fixed;
+  top: 40px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  padding: 5px;
+  width: 55px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 11px; }
+  #next_sector:hover, #previous_sector:hover {
+    background-color: #fcc; }
+
+#next_sector {
+  border-left: solid 2px black;
+  right: 0px; }
+
+#previous_sector {
+  border-right: solid 2px black;
+  left: 0px; }
+.trajectory {
+  padding: 5px;
+  border: solid 2px white;
+  cursor: pointer; }
+
+.chosen {
+  border: solid 2px #cccccc;
+  background-color: #eee; }
+
+.highlight {
+  border: solid 2px #a99900;
+  background-color: #f3dc00; }
+
+.figure {
+  float: right;
+  max-width: 30%;
+  margin-left: 10px;
+  background-color: #fff; }
+  .figure img, .figure .caption {
+    max-width: 100%; }
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+
+
+
+*/
+

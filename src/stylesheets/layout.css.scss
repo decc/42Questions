@@ -7,75 +7,40 @@ body {
 #twentyfiftybanner #signout {float: right;margin-right: 10px;}
 
 #pathway {
-  width: 100%;
   z-index: 1;
-  border: solid 1px #000;
+  width: 30em;
+  height: 7em;
+  border-top: solid 2px #000;
+  border-left: solid 2px #000;
   background-color: #fff;
-  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
-  padding: 15px;
+  box-shadow: 0px 0 10px 10px rgba(0,0,0,0.2);
+  padding: 5px;
   position: fixed;
-  top: 15px;
-  left: 0px;
+  bottom: 0px;
+  right: 0px;
 
-  div {
-    float: left;
-  }
+  color: black;
+  font-size: 11px;
 
-  #title {
-    width: 100px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-
-    .top {
-      font-size: 45px;
-      margin-bottom: 0px;
-      padding-bottom: 0px;
-    }
-    .bottom {
-      margin-top: -10px;
-      padding-top: 0px;
-      font-size: 14px;
-    }
-
-  }
-  
-  #choices {
-    width: 150px;
-    font-size: 10px;
-    #code {
-      display: inline;
-      a {
-        margin-right: 0.1em;
-      }
-    }
+  h2 {
+    font-weight: normal;
+    font-size: 11px;
+    text-transform:uppercase;
+    margin: 0px;
   }
 
   #implications {
-    font-size: 10px;
   }
 }
 
-#questions {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.question {
-  position: absolute;
+#question {
+  margin: 30px;
   border: solid 1px #000;
   background-color: #fff;
   padding: 15px;
+  margin-bottom: 10em;
 
   h1 {
     text-align: center;
   }
-}
-
-.sparkline {
-  display: inline-block;
 }

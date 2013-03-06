@@ -3,8 +3,6 @@
 # It reads the current settings from the URL and then 
 # triggers a request for the data relating to that question.
 $(document).ready () ->
-  setupQuestionDivs()
-  setupLayout()
   setupImplications()
   setVariablesFromURL()
   setupNextPreviousButtons()
@@ -22,8 +20,8 @@ question_margin = 100
 # /code/question_name
 setVariablesFromURL = () ->
   url_elements = window.location.pathname.split('/')
-  window.code = url_elements[1].split("")
-  question_name = url_elements[2]
+  window.code = url_elements[1].split("") if url_elements[1]
+  question_name = url_elements[2] if url_elements[2]
   $(document)
     .trigger('pathwayChanged')
     .trigger('questionChanged')
@@ -34,10 +32,9 @@ setVariablesFromURL = () ->
 # of the different levels are requested from the server.
 # FIXME: Need a busy spinner
 loadQuestion = () ->
-  return false unless $("##{question_name}").html() == ''
   $.get("/question/#{question_name}.html", (data, status) ->
     if data?
-      $("##{question_name}").html(data)
+      $("#question").html(data)
   )
 
 $(document).on('questionChanged', () -> loadQuestion())
@@ -76,34 +73,6 @@ setupImplications = () ->
 updateImplicationCallback = (data) ->
   window.data = data
 
-  # Code
-  target = $("#choices table#code")
-  target.empty()
-  target.append("<tr id='supply'></tr>")
-  target.append("<tr id='demand'></tr>")
-  target.append("<tr id='other'></tr>")
-
-  supply = window.code.slice(0,22)
-  demand = window.code.slice(23,49)
-  other = window.code.slice(50,53)
-
-  row = $("#code tr#supply")
-  for c in supply
-    unless c == "0"
-      row.append("<td>#{c}</td>")
-    false
-  
-  row = $("#code tr#demand")
-  for c in demand
-    unless c == "0"
-      row.append("<td>#{c}</td>")
-  
-  row = $("#code tr#other")
-  for c in other
-    unless c == "0"
-      row.append("<td>#{c}</td>")
-    false
- 
   # Cost
   window.adjust_costs_of_pathway(data)
   low = Math.round(data.total_cost_low_adjusted)
@@ -127,7 +96,7 @@ updateImplicationCallback = (data) ->
   words = for fuel in supply_in_2050.slice(1,4)
     "#{fuel.name}: #{Math.round(fuel.value * 100.0 / total)}%"
 
-  $("#implications #supply").html("The principal fuels are: #{words.join(" ")}<br/>")
+  $("#implications #supply").html("Main primary fuels: #{words.join(" ")}<br/>")
 
   # Emissions
   ghg = data.ghg.percent_reduction_from_1990
@@ -185,6 +154,7 @@ combinations = (maximums, i = 0) ->
 # It assumes that the web page has a series of items with class trajectory1, trajectory2 etc
 window.standardQuestion = ( arg ) ->
   target = $("##{arg.id}")
+  console.log target
   sectors = arg.sectors
   possibleTrajectories = arg.numberOfPossibleTrajectories
   trajectory = []
@@ -270,35 +240,6 @@ question_sequence = [
   'ccs'
   'residentialHeating'
 ]
-
-question_divs = undefined
-
-setupQuestionDivs = () ->
-  parent = $('#questions')
-  for q in question_sequence
-    parent.append("<div id='#{q}' class='question'></div>")
-  question_divs = $('.question')
-
-setupLayout = () ->
-  window_width = $(document).width()
-  $('#questions')
-    .width(window_width)
-    .height(1000)
-    .append("<div style='position: absolute; width: #{question_margin}px; left: #{question_divs.length * window_width}px; top: 100px;'>&nbsp;</div>")
-  question_divs
-    .width(window_width-30-question_margin)
-    .css('left', (i) -> (i*window_width) + (question_margin/2))
-    .css('top', 100)
-
-# FIXME: I don't get callbacks, why can't I pass the animateToQuestion function directly?
-$(document).on('questionChanged', () -> animateToQuestion() )
-
-animateToQuestion = () ->
-  i = question_sequence.indexOf(question_name)
-  $('#questions').animate(
-    {scrollLeft: (i*window_width)}
-    1000
-  )
 
 incrementQuestionBy = (increment) ->
   i = question_sequence.indexOf(question_name)
