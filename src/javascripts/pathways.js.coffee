@@ -235,6 +235,8 @@ question_sequence = [
   'welcome'
   'nuclear'
   'ccs'
+  'offshoreWind'
+  'solarPV'
   'residentialHeating'
 ]
 
