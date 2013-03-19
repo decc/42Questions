@@ -16,7 +16,7 @@ enable :lock # The C 2050 model is not thread safe
 
 # By default we take people to a blank pathway with the first question
 get '/' do 
-  redirect to("/1111111111111111111111111111111111111111111111111111/nuclear")
+  redirect to("/10111111111111110111111001111110111101101101110110111/welcome")
 end
 
 # This is called by the page Javascript to return a fragment of html for each question

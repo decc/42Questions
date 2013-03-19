@@ -9,11 +9,7 @@ $(document).ready () ->
 
 # We need to keep track of the current pathway and the current question
 window.code = "10111111111111110111111001111110111101101101110110111".split("")
-question_name = "nuclear"
-
-# In order to do the sideways scrolling trick, we need to know some layout things
-window_width = undefined
-question_margin = 100
+question_name = "welcome"
 
 # When the page is first loaded, checks its url and uses it to define
 # the state of the visualisation. The url is expected to be of the form
@@ -236,6 +232,7 @@ window.standardQuestion = ( arg ) ->
   setupQuestion()
 
 question_sequence = [
+  'welcome'
   'nuclear'
   'ccs'
   'residentialHeating'
