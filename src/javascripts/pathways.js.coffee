@@ -253,7 +253,23 @@ question_sequence = [
   'algae'
   'typeOfFuelFromBioenergy'
   'bioenergyImports'
+  'domesticTransportBehaviour'
+  'zeroEmissionsVehicles'
+  'domesticFreight'
+  'internationalAviation'
+  'internationalShipping'
+  'averageHomeTemperature'
+  'homeInsulation'
   'residentialHeating'
+  'homeLightingAndAppliancesAndCooking'
+  'industry'
+  'commercialHeatingAndCoolingDemand'
+  'commercialHeatingTechnology'
+  'commercialLightingAndAppliancesAndCooking'
+  'geosequestration'
+  'storageDemandShiftingAndInterconnection'
+  'ukFossilFuelProduction'
+  'results'
 ]
 
 incrementQuestionBy = (increment) ->

@@ -1,0 +1,62 @@
+:javascript
+  standardQuestion({id: 'zeroLevel', sectors: [26], numberOfPossibleTrajectories: [4]})
+  standardQuestion({id: 'zeroFuel', sectors: [27], numberOfPossibleTrajectories: [4]})
+    
+%h1 Domestic transport electrification
+
+.figure
+  %img{src:'/images/question25/vauxhall ampera.png'}
+  .caption Figure 1. The Vauxhall Ampera is scheduled to enter the UK market in 2012. Its battery can store 16 kWh which gives it a pure electric range of 80 km. It also contains a petrol-electric generator to extend its range. Photo © Vauxhall.
+
+%p
+  %b THIS PAGE NEEDS UPDATING TO SPLIT OUT THE HYDROGEN:ELECTRIC lEVER
+
+%p In 2007, almost all the UK’s domestic passenger transport was powered by diesel or petrol. Only 1% of transport fuel was electricity, and that was almost entirely for electrified railways.
+
+#zeroLevel
+  .trajectory.trajectory1
+    %b Level 1
+    assumes that by 2050, 20% of passenger kilometres are in cars that have both petrol engines and electric motors (known as plug-in hybrid electric vehicles), with batteries that can be charged from the mains, and 2.5% are in fully electric vehicles. Buses and trains are largely unchanged.
+    
+  .trajectory.trajectory2
+    %b Level 2
+    assumes that by 2050, only 35% of passenger-km are travelled in conventional petrol or diesel engine cars. 54% are plug-in hybrid vehicles and 11% are fully electric or fuel cell vehicles. All buses are hybrids with electric motors as well as diesel engines. The fraction of passenger railway travel that is electrified increases from 64% to 73%.
+    
+  .trajectory.trajectory3
+    %b Level 3
+    assumes that by 2050, 20% of passenger-km are travelled in conventional combustion engine cars, with 32% in plug-in hybrid vehicles and 48% in fully electric or fuel cell electric vehicles. 22% of bus travel takes place in fully electric or fuel cell electric buses, with all other buses powered by hybrid diesel-electric engines. 87% of passenger railway travel is electrified.
+    
+  .trajectory.trajectory4
+    %b Level 4
+    assumes that by 2050 100% of car travel is powered by an electric motor, with 80% from batteries and 20% from hydrogen fuel cells. All passenger trains are electrified and 50% of bus travel is fully electrified (25% from batteries and 25% from fuel cells), with the remainder being hybrid diesel-electric.
+    
+#interaction
+  %h2 Interaction with other choices
+
+  %p How individuals choose to travel, and how far, influences the types of vehicle on the road as well as overall demand for different fuel types, including electricity. 
+
+  %p Where vehicles are not electrified (and even in level 4, buses are expected to be at least partially powered by liquid fuel) they can run on biofuel rather than diesel or petrol. This option can be selected in the 2050 Calculator by choosing bioenergy imports, or choosing to dedicate land to biomass and to turn that biomass into liquid biofuel.
+    
+%h1 Preference for fuel cells or for batteries
+
+%p
+  %b THIS PAGE NEEDS WRITING
+
+#zeroFuel
+  .trajectory.trajectory1
+    %b Level 1:
+    Of the vehicles that aren't powered by oil or biofuel, all will be battery-electric. None will use hydrogen fuel cells. 
+    
+  .trajectory.trajectory2
+    %b Level 2:
+    Of the vehicles that aren't powered by oil or biofuel, 80% will be battery-electric. 20% will use hydrogen fuel cells. 
+    
+  .trajectory.trajectory3
+    %b Level 3:
+    Of the vehicles that aren't powered by oil or biofuel, 80% will be battery-electric. 20% will use hydrogen fuel cells. 
+    
+  .trajectory.trajectory4
+    %b Level 4:
+    Of the vehicles that aren't powered by oil or biofuel, all will use hydrogen fuel cells. 
+    
+#interaction

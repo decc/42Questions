@@ -1,0 +1,61 @@
+:javascript
+  standardQuestion({id: 'industryGrowth', sectors: [40], numberOfPossibleTrajectories: [3]});
+  standardQuestion({id: 'industryGreen', sectors: [41], numberOfPossibleTrajectories: [3]});
+
+%h1 Growth in Industry
+    
+.figure
+  %img{src:'/images/question40/cement.png'}
+  .caption Figure 1. A UK cement processing plant. Currently about 30% of all industrial process emissions come from cement making. This makes cement this the largest emitting industrial sector, followed by steel making. Photo © agg-net.com
+
+%p The industry sector includes the manufacture of metals, minerals, and other chemicals. In 2007 industry was responsible for about 25% of total UK energy demand. In addition to emissions from the energy used, the sector also emitted 28 MtCO2e directly from its processes. 36% of industrial energy demand was supplied by gas, 28% by electricity, and the rest by oil, coal, and combined heat and power. 
+
+%p In the 2050 Calculator the industrial sector’s future energy use is determined by two factors: industry growth (described here) and industry energy intensity (described on another page). The changes here represent different choices rather than an increasing scale of effort. They cannot be compared with the Levels 1-4 in other sectors and have therefore been labelled as Trajectories A-C instead.
+    
+#industryGrowth
+  .trajectory.trajectory1
+    %b Trajectory A
+    assumes that UK industry will expand, because of the need to manufacture new low-carbon technologies, and low-carbon replacements  for existing goods and machinery. Assuming a growth rate of 1.5% growth rate (similar to the UK’s historical rate in the 1980s and 1990s) industrial output will double between 2007 and 2050.
+    
+  .trajectory.trajectory2
+    %b Trajectory B
+    assumes that the growth trend of 1970 to 2008 continues, leading to industrial output increasing by 30% to 2050.
+    
+  .trajectory.trajectory3
+    %b Trajectory C
+    assumes the UK’s economy shifts from industry into other sectors, leading to industrial output declining by 30-40% between 2007 and 2050.
+    
+#interaction
+  %h2 Interaction with other choices
+
+  %p The size of the industrial sector affects the need for freight, but this is not handled automatically by the Calculator – you have to choose the setting for each independently. 
+
+%h1 Energy intensity of industry
+    
+.figure
+  %img{src:'/images/question41/ijmuiden.png'}
+  .caption Figure 1. A blast furnace at Ijmuiden, in The Netherlands. It uses coke to reduce iron ore into iron. The parent company is part of ULCOS, a group investigating how to capture the emissions from the blast furnace and how the entire process might be electrified through the use of electrolysis rather than chemical reduction. Photo © Svdolen.
+    
+%p The industry sector includes the manufacture of metals, minerals, and other chemicals. In 2007 industry was responsible for about 25% of total UK energy demand. In addition to emissions from the energy used, the sector also emitted 28 MtCO2e directly from its processes. 36% of industrial energy demand was for gas, 28% was for electricity, with the rest from oil, coal and district heating. 
+
+%p In the 2050 Calculator the industrial sector’s future energy use is determined by two factors: industry energy intensity (described here) and industry growth (described on another page).
+    
+#industryGreen
+  .trajectory.trajectory1
+    %b Level 1
+    assumes that there is no widespread deployment of carbon capture and storage (CCS) or fuel switching; that process emissions remain constant; and that there is a 10% reduction in energy intensity between 2007 and 2050.
+    
+  .trajectory.trajectory2
+    %b Level 2
+    assumes a 20% improvement in energy intensity; that 40% of industrial energy demand is for electricity; a 30% reduction in process emissions per unit of output; and that 10% of emissions are captured through CCS.
+    
+  .trajectory.trajectory3
+    %b Level 3
+    assumes there is a 40% improvement in energy efficiency and at least a 25% average reduction in process emission intensity. 66% of energy demanded is for electricity. CCS is rolled out quickly after 2025 and by 2050 about half of industrial emissions are captured (including 80% of emissions from steel, ammonia and cement plants).
+    
+#interaction
+  %h2 Interaction with other choices
+
+  %p The coal, gas and oil used by industry could be replaced with bioenergy. To do this in the 2050 Calculator, select bioenergy imports, or choose to dedicate land to biomass and to turn that biomass into solid, liquid or gaseous biofuel.
+
+  %p There is significant demand for carbon dioxide (CO2) transport infrastructure and storage capacity in three sectors: industry, carbon capture and storage, and geosequestration. Calculator users may wish to consider these options together to take a view on whether the total demand for CO2 transport and storage infrastructure is feasible.
