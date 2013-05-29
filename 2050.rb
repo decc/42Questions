@@ -12,6 +12,9 @@ require 'haml' # For HTML
 require 'sass' # For CSS
 require 'coffee_script' # For Javascript
 
+load './src/helper.rb'
+helpers Helper
+
 enable :lock # The C 2050 model is not thread safe
 
 # By default we take people to a blank pathway with the first question
@@ -41,8 +44,6 @@ if development?
   set :views, settings.root + '/src'
 
   get '*' do
-    load './src/helper.rb'
-    helpers(Helper)
     haml :'index.html'
   end
 else
